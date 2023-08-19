@@ -1,0 +1,27 @@
+{
+  "name": "ds-ksa-pro",
+  "version": "1.0.0",
+  "description": "Data Scientists in the Kingdom of Saudi Arabia",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "Gabriel Okundaye",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^12.3.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/D0nG4667/dsksaprofessionals.git"
+  },
+  "bugs": {
+    "url": "https://github.com/D0nG4667/dsksaprofessionals/issues"
+  },
+  "homepage": "https://github.com/D0nG4667/dsksaprofessionals#readme"
+}
