@@ -1,9 +1,28 @@
 import Speaker from "./Speaker"
 import  { data } from "../../SpeakerData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function SpeakerList({ showSessions }) {
-  const [speakersData, setSpeakersData] = useState(data);
+  const [speakersData, setSpeakersData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasErrored, setHasErrored] = useState(false);
+  const [error, setError] = useState("");
+
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  useEffect(async () => {
+    try {
+      await delay(2000);
+      // throw "api failed to send data";
+      setIsLoading(false);
+      setSpeakersData(data);      
+    } catch (error) {
+      setIsLoading(false);
+      setHasErrored(true);
+      setError(error);      
+    }
+    
+  }, []);
 
   function onFavoriteToggle(id) {
     const speakersRecPrevious = speakersData.find(function (rec) {
@@ -19,6 +38,16 @@ function SpeakerList({ showSessions }) {
 
     setSpeakersData(speakerDataNew);
   }
+
+  if (hasErrored) {
+    return (
+      <div className="text-danger">
+        ERROR: <b>loading Speaker Data Failed {error}</b>
+      </div>
+    )
+  }
+  
+  if (isLoading) return <div>...Loading</div>
 
   return (
     <div className="container speaker-list">
