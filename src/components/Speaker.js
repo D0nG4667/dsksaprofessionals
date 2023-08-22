@@ -26,8 +26,36 @@ function Session ({ title, room }) {
       </div>    
     );  
   }
+
+  function SpeakerFavorite({ favorite, onFavoriteToggle }) {
+    return (
+      <div className="action padB1">
+        <span
+          onClick={onFavoriteToggle}        
+        >
+          <i className={
+            (favorite) ? 
+              "fa fa-star orange"
+            :
+              "fa fa-star-o orange"
+          } 
+          />
+          &nbsp;Favorite&nbsp;
+        </span>
+      </div>
+    )
+    
+  }
   
-  function SpeakerDemographics({ first, last, bio, company, twitterHandle, favorite }) {
+  function SpeakerDemographics({ 
+    first, 
+    last, 
+    bio, 
+    company,
+    twitterHandle,
+    favorite,
+    onFavoriteToggle
+   }) {
     return (
       <div className="speaker-info">
         <div className="d-flex justify-content-between mb-3">
@@ -35,6 +63,10 @@ function Session ({ title, room }) {
             {first} {last}
           </h3>                    
         </div>
+        <SpeakerFavorite
+          favorite={favorite}
+          onFavoriteToggle={onFavoriteToggle}
+        />
         <div>
             <p className="card-description">
                 {bio}
@@ -51,11 +83,10 @@ function Session ({ title, room }) {
             </div>
         </div>            
       </div>
-    )
-    
+    ) 
   }
   
-  function Speaker({ speaker }) {
+  function Speaker({ speaker, showSessions, onFavoriteToggle }) {
     const {
       id,
       first,
@@ -66,9 +97,13 @@ function Session ({ title, room }) {
       <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-sm-12 col-xs-12">
         <div className="card card-height p-4 mt-4">
           <SpeakerImage id={id} first={first} last={last}/>                
-          <SpeakerDemographics {...speaker} />
+          <SpeakerDemographics {...speaker} onFavoriteToggle={onFavoriteToggle} />
         </div>
-          <Sessions sessions={sessions} />                
+          {(showSessions) ?
+            <Sessions sessions={sessions} />  
+          :
+            null
+          }              
       </div>
     )    
   }

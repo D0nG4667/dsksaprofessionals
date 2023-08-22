@@ -1,24 +1,22 @@
-import  { data } from "../../SpeakerData";
-import SpeakerList from "./SpeakerList";
-import Header from "./Header";
 import SpeakersToolbar from "./SpeakersToolbar";
+import SpeakerList from "./SpeakerList";
 import { useState } from "react";
 
-function Speakers() {
-  const [theme, setTheme] = useState("light");
+
+function Speakers({ theme, setTheme }) {
+    const [showSessions, setShowSessions] = useState(true);
 
   return (
-    <div className={
-      theme === "light" ? 
-        "container-fluid light"
-        :
-        "container-fluid dark"}
-    >
-        <Header theme={theme} />
-        <SpeakersToolbar theme={theme} setTheme={setTheme}/>
-        <SpeakerList data={data}/>    
-    </div>
+    <>
+        <SpeakersToolbar 
+            theme={theme} 
+            setTheme={setTheme} 
+            showSessions={showSessions}
+            setShowSessions={setShowSessions}
+        />
+        <SpeakerList showSessions={showSessions}/> 
+    </>
   )
 }
 
-export default Speakers;
+export default Speakers

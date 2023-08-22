@@ -1,9 +1,4 @@
-import { useState } from "react";
-
-function SpeakersToolbar({ theme, setTheme}) {
-
-    const [showSessions, setShowSessions] = useState(true);
-
+function SpeakersToolbar({ theme, setTheme, showSessions, setShowSessions}) {
 
     function handleChange(e) {        
         ([e.target.name] == "sessions") ?
