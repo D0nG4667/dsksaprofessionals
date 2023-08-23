@@ -1,4 +1,3 @@
-import  { data } from "../../SpeakerData";
 import { useEffect, useState } from "react";
 
 export const REQUEST_STATUS = {
@@ -7,8 +6,8 @@ export const REQUEST_STATUS = {
     FAILURE: "failure",
 };
 
-function useRequestSpeakers(delayTime = 1000) {    
-    const [speakersData, setSpeakersData] = useState([]);
+function useRequestDelay(delayTime = 1000, initialData=[]) {    
+    const [data, setData] = useState(initialData);
     const [requestStatus, setRequestStatus] = useState(REQUEST_STATUS.LOADING);
     const [error, setError] = useState("");
 
@@ -19,36 +18,36 @@ function useRequestSpeakers(delayTime = 1000) {
         await delay(delayTime);
         // throw "api failed to send data";
         setRequestStatus(REQUEST_STATUS.SUCCESS);
-        setSpeakersData(data);      
+        setData(data);      
     } catch (error) {
         setRequestStatus(REQUEST_STATUS.FAILURE);
         setError(error);      
     }
     
     }, []);
+ 
+    function updateRecord(recordUpdated) {
+        const newRecords = data.map(function (rec) {
+            return rec.id === recordUpdated.id ? recordUpdated : rec;
+        });
 
-    function onFavoriteToggle(id) {
-    const speakersRecPrevious = speakersData.find(function (rec) {
-        return rec.id === id;
-    });
-    const speakersRecUpdated = {
-    ...speakersRecPrevious, 
-    favorite: !speakersRecPrevious.favorite
-    };
-    const speakerDataNew = speakersData.map(function (rec) {
-        return rec.id === id ? speakersRecUpdated : rec;
-    })
-
-    setSpeakersData(speakerDataNew);
+        (async () => {
+            try {
+                await delay(delayTime);
+                setData(newRecords);
+            } catch (error) {
+                console.log("error thrown inside delayFunction, error");
+            }            
+        })();
     }
 
     return {
-        speakersData,
+        data,
         requestStatus,
         error,
-        onFavoriteToggle,
+        updateRecord,
     }
 }
 
-export default useRequestSpeakers;
+export default useRequestDelay;
 
