@@ -1,44 +1,18 @@
 import Speaker from "./Speaker"
-import  { data } from "../../SpeakerData";
-import { useEffect, useState } from "react";
+import ReactPlaceHolder from 'react-placeholder';
+import useRequestSpeakers from "../hooks/useRequestSpeakers";
 
 function SpeakerList({ showSessions }) {
-  const [speakersData, setSpeakersData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasErrored, setHasErrored] = useState(false);
-  const [error, setError] = useState("");
 
-  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const {
+    speakersData,
+    isLoading,
+    hasErrored,
+    error,
+    onFavoriteToggle,
+  } = useRequestSpeakers(1000)
 
-  useEffect(async () => {
-    try {
-      await delay(2000);
-      // throw "api failed to send data";
-      setIsLoading(false);
-      setSpeakersData(data);      
-    } catch (error) {
-      setIsLoading(false);
-      setHasErrored(true);
-      setError(error);      
-    }
-    
-  }, []);
-
-  function onFavoriteToggle(id) {
-    const speakersRecPrevious = speakersData.find(function (rec) {
-      return rec.id === id;
-    });
-    const speakersRecUpdated = {
-    ...speakersRecPrevious, 
-    favorite: !speakersRecPrevious.favorite
-    };
-    const speakerDataNew = speakersData.map(function (rec) {
-      return rec.id === id ? speakersRecUpdated : rec;
-    })
-
-    setSpeakersData(speakerDataNew);
-  }
-
+  
   if (hasErrored) {
     return (
       <div className="text-danger">
@@ -47,10 +21,16 @@ function SpeakerList({ showSessions }) {
     )
   }
   
-  if (isLoading) return <div>...Loading</div>
+  // if (isLoading) return <div>...Loading</div>
 
   return (
     <div className="container speaker-list">
+      <ReactPlaceHolder
+        type="media"
+        rows={15}
+        className="speakerlist-placeholder"
+        ready={!isLoading}
+      >
         <div className="row">
             {speakersData.map(function (speaker) {
                 return (
@@ -63,6 +43,7 @@ function SpeakerList({ showSessions }) {
                 )
             })}
         </div>
+      </ReactPlaceHolder>
     </div>
   )
 }
