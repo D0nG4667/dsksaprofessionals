@@ -1,4 +1,9 @@
-function SpeakersToolbar({ theme, setTheme, showSessions, setShowSessions}) {
+import { ThemeContext } from "./App";
+import { useContext } from "react";
+
+function SpeakersToolbar({ showSessions, setShowSessions}) {
+
+    const { theme, setTheme } = useContext(ThemeContext);
 
     function handleChange(e) {        
         ([e.target.name] == "sessions") ?

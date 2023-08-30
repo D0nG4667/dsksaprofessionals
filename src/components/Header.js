@@ -1,4 +1,9 @@
-function Header({ theme }) {
+import { ThemeContext } from "./App";
+import { useContext } from "react";
+
+function Header() {
+  const { theme } = useContext(ThemeContext);
+
   const src = `/images/dsksa-logo${( theme==="dark") ? "-dark" : "" }.png`;
 
   const textTheme = `${(theme === "light") ? "text-dark" : "text-info"}`;
