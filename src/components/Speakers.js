@@ -1,7 +1,7 @@
 import SpeakersToolbar from "./SpeakersToolbar";
 import SpeakerList from "./SpeakerList";
 import { useContext, useState } from "react";
-import { ThemeContext } from "./App";
+import { ThemeContext } from "./Layout";
 
 
 
@@ -23,4 +23,4 @@ function Speakers() {
   )
 }
 
-export default Speakers
+export default Speakers;
