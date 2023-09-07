@@ -1,7 +1,7 @@
 import SpeakersToolbar from "./SpeakersToolbar";
 import SpeakerList from "./SpeakerList";
 import { useContext, useState } from "react";
-import { ThemeContext } from "./Layout";
+import { ThemeContext } from "../context/ThemeContext";
 
 
 
