@@ -3,7 +3,7 @@ import ReactPlaceHolder from 'react-placeholder';
 import useRequestDelay, {REQUEST_STATUS} from "../hooks/useRequestDelay";
 import { data } from '../../SpeakerData';
 
-function SpeakerList({ showSessions }) {
+function SpeakerList() {
 
   const {
     data: speakersData,
@@ -36,8 +36,7 @@ function SpeakerList({ showSessions }) {
                 return (
                 <Speaker 
                   key={speaker.id} 
-                  speaker={speaker}
-                  showSessions={showSessions}
+                  speaker={speaker}                  
                   onFavoriteToggle={(doneCallback) => {
                     updateRecord ({
                       ...speaker, 

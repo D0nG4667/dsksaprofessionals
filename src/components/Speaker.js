@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { SpeakerFilterContext } from "../context/SpeakerFilterContext";
 
 function Session ({ title, room }) {
     return (
@@ -101,7 +102,9 @@ function Session ({ title, room }) {
     ) 
   }
   
-  function Speaker({ speaker, showSessions, onFavoriteToggle }) {
+  function Speaker({ speaker, onFavoriteToggle }) {
+    const { showSessions } = useContext(SpeakerFilterContext);
+
     const {
       id,
       first,

@@ -1,7 +1,7 @@
 import React, { createContext } from 'react';
 import useTheme from '../hooks/useTheme';
 
-export const ThemeContext = createContext();
+const ThemeContext = createContext();
 
 function ThemeProvider({ children, startingTheme }) {
     const {theme, setTheme} = useTheme(startingTheme);
@@ -17,4 +17,4 @@ function ThemeProvider({ children, startingTheme }) {
     
 }
 
-export { ThemeProvider };
+export { ThemeContext, ThemeProvider, };
