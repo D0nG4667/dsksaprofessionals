@@ -528,7 +528,7 @@ export const data = [
       {
         id: "177",
         title: "JavaScript Town Meeting",
-        eventYear: "2009",
+        eventYear: "2020",
         room: {
           name: "5501",
           capacity: 70,
@@ -537,7 +537,7 @@ export const data = [
       {
         id: "371",
         title: "JavaScript: The Good Parts",
-        eventYear: "2010",
+        eventYear: "2022",
         room: {
           name: "1501",
           capacity: 190,
@@ -546,7 +546,7 @@ export const data = [
       {
         id: "536",
         title: "Talk with Crock",
-        eventYear: "2010",
+        eventYear: "2023",
         room: {
           name: "1501",
           capacity: 190,
@@ -555,7 +555,7 @@ export const data = [
       {
         id: "588",
         title: "ECMAScript 5: The New Parts",
-        eventYear: "2011",
+        eventYear: "2023",
         room: {
           name: "1501",
           capacity: 190,
@@ -564,7 +564,7 @@ export const data = [
       {
         id: "589",
         title: "ECMAScript: What Next?",
-        eventYear: "2011",
+        eventYear: "2023",
         room: {
           name: "1501",
           capacity: 190,
@@ -573,7 +573,7 @@ export const data = [
       {
         id: "833",
         title: "Programming Style and Your Brain",
-        eventYear: "2012",
+        eventYear: "2024",
         room: {
           name: "SmithWick",
           capacity: 1000,
@@ -582,7 +582,7 @@ export const data = [
       {
         id: "1056",
         title: "Monads and Gonads",
-        eventYear: "2012",
+        eventYear: "2023",
         room: {
           name: "SmithWick",
           capacity: 1000,
@@ -591,7 +591,7 @@ export const data = [
       {
         id: "1198",
         title: "Fun with Functions (Part 1)",
-        eventYear: "2013",
+        eventYear: "2023",
         room: {
           name: "SmithWick",
           capacity: 1000,
@@ -600,7 +600,7 @@ export const data = [
       {
         id: "1199",
         title: "Fun with Functions (Part 2)",
-        eventYear: "2013",
+        eventYear: "2023",
         room: {
           name: "SmithWick",
           capacity: 1000,
@@ -609,7 +609,7 @@ export const data = [
       {
         id: "1390",
         title: "Fun with Functions in JavaScript (Full Day)",
-        eventYear: "2014",
+        eventYear: "2023",
         room: {
           name: "Cornell Hall",
           capacity: 0,
@@ -618,7 +618,7 @@ export const data = [
       {
         id: "1416",
         title: "The Better Parts",
-        eventYear: "2014",
+        eventYear: "2023",
         room: {
           name: "SmithWick",
           capacity: 1000,
@@ -627,7 +627,7 @@ export const data = [
       {
         id: "3643",
         title: "Managing Programmers. Programmers are not like the other kids",
-        eventYear: "2014",
+        eventYear: "2024",
         room: {
           name: "1501",
           capacity: 190,
@@ -636,7 +636,7 @@ export const data = [
       {
         id: "3687",
         title: "The Better Parts",
-        eventYear: "2015",
+        eventYear: "2024",
         room: {
           name: "VPA-Theater",
           capacity: 395,
@@ -645,7 +645,7 @@ export const data = [
       {
         id: "3696",
         title: "Managing Programmers",
-        eventYear: "2015",
+        eventYear: "2024",
         room: {
           name: "VPA-Theater",
           capacity: 395,
@@ -654,7 +654,7 @@ export const data = [
       {
         id: "4726",
         title: "Upgrading the Web",
-        eventYear: "2015sf",
+        eventYear: "2024",
         room: {
           name: "Cornell Hall",
           capacity: 0,
@@ -663,7 +663,7 @@ export const data = [
       {
         id: "5987",
         title: "The Seif Project Continued",
-        eventYear: "2016",
+        eventYear: "2024",
         room: {
           name: "VPA-Theater",
           capacity: 395,
@@ -672,7 +672,7 @@ export const data = [
       {
         id: "6171",
         title: "The Post Javascript Apocalypse",
-        eventYear: "2016",
+        eventYear: "2024",
         room: {
           name: "VPA-Theater",
           capacity: 395,
@@ -681,7 +681,7 @@ export const data = [
       {
         id: "6208",
         title: "Numbers",
-        eventYear: "2017",
+        eventYear: "2024",
         room: {
           name: "Town Square B",
           capacity: 130,
@@ -690,7 +690,7 @@ export const data = [
       {
         id: "6209",
         title: "Character Sets",
-        eventYear: "2017",
+        eventYear: "2024",
         room: {
           name: "Town Square B",
           capacity: 130,
@@ -699,7 +699,7 @@ export const data = [
       {
         id: "7256",
         title: "Principles of Security",
-        eventYear: "2017",
+        eventYear: "2024",
         room: {
           name: "Town Square B",
           capacity: 130,
@@ -708,7 +708,7 @@ export const data = [
       {
         id: "7417",
         title: "How JavaScript Works",
-        eventYear: "2018",
+        eventYear: "2024",
         room: {
           name: "Town Square A",
           capacity: 130,
@@ -726,7 +726,7 @@ export const data = [
       {
         id: "7465",
         title: "Web Panel with Douglas Crockford, Steve Souders and Mike North",
-        eventYear: "2018",
+        eventYear: "2024",
         room: {
           name: "Town Square B",
           capacity: 130,
@@ -735,7 +735,7 @@ export const data = [
       {
         id: "7489",
         title: "The History of JSON",
-        eventYear: "2019",
+        eventYear: "2024",
         room: {
           name: "Town Square A",
           capacity: 130,
@@ -744,7 +744,7 @@ export const data = [
       {
         id: "7569",
         title: "You Can Count on Numbers",
-        eventYear: "2019",
+        eventYear: "2024",
         room: {
           name: "Town Square A",
           capacity: 130,
