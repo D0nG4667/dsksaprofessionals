@@ -11,7 +11,9 @@ function SpeakerList() {
     data: speakersData,
     requestStatus,
     error,
+    insertRecord,
     updateRecord,
+    deleteRecord,
   } = useRequestDelay(1500, data);
 
   const { searchQuery, eventYear } = useContext(SpeakerFilterContext);
@@ -55,8 +57,10 @@ function SpeakerList() {
                 <Speaker 
                   key={speaker.id} 
                   speaker={speaker}                  
+                  inserRecord={insertRecord}
                   updateRecord={updateRecord}
-                />            
+                  deleteRecord={deleteRecord}
+                  />            
                 )
             })}
         </div>
