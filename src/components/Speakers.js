@@ -1,6 +1,6 @@
 import SpeakersToolbar from "./SpeakersToolbar";
 import SpeakerList from "./SpeakerList";
-import { SpeakerFilterProvider } from "../context/SpeakerFilterContext";
+import { SpeakerFilterProvider } from "../contexts/SpeakerFilterContext";
 
 
 

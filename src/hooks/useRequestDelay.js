@@ -29,7 +29,7 @@ function useRequestDelay(delayTime = 1000, initialData=[]) {
     // Create/Insert
     function insertRecord(record, doneCallback) {
         const originalRecords = [...data];
-        const newRecords = [record, ...data]
+        const newRecords = [record, ...data];
         (async () => {
             try {
                 setData(newRecords);

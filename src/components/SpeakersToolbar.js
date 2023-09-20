@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
-import { SpeakerFilterContext } from "../context/SpeakerFilterContext";
+import { ThemeContext } from "../contexts/ThemeContext";
+import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
 
 function SpeakersToolbar() {
 

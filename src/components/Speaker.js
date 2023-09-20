@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
-import { SpeakerFilterContext } from "../context/SpeakerFilterContext";
-import { SpeakerContext, SpeakerProvider } from "../context/SpeakerContext";
+import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
+import { SpeakerContext, SpeakerProvider } from "../contexts/SpeakerContext";
+import SpeakerDelete from "./SpeakerDelete";
 
 function Session ({ title, room }) {
     return (
@@ -132,7 +133,8 @@ function Session ({ title, room }) {
               <Sessions />  
             :
               null
-            }              
+            }
+            <SpeakerDelete />              
         </div>
       </SpeakerProvider>
     )    

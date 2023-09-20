@@ -1,9 +1,10 @@
-import Speaker from "./Speaker"
+import { useContext } from "react";
+import Speaker from "./Speaker";
 import ReactPlaceHolder from 'react-placeholder';
 import useRequestDelay, {REQUEST_STATUS} from "../hooks/useRequestDelay";
 import { data } from '../../SpeakerData';
-import { SpeakerFilterContext } from "../context/SpeakerFilterContext";
-import { useContext } from "react";
+import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
+import SpeakerAdd from "./SpeakerAdd";
 
 function SpeakerList() {
 
@@ -29,7 +30,7 @@ function SpeakerList() {
   
   // if (isLoading) return <div>...Loading</div>
 
-  return (
+  return (    
     <div className="container speaker-list">
       <ReactPlaceHolder
         type="media"
@@ -37,6 +38,7 @@ function SpeakerList() {
         className="speakerlist-placeholder"
         ready={requestStatus === REQUEST_STATUS.SUCCESS}
       >
+        <SpeakerAdd eventYear={eventYear} insertRecord={insertRecord} />
         <div className="row">
             {speakersData
               .filter(function (speaker) {
@@ -57,7 +59,7 @@ function SpeakerList() {
                 <Speaker 
                   key={speaker.id} 
                   speaker={speaker}                  
-                  inserRecord={insertRecord}
+                  insertRecord={insertRecord}
                   updateRecord={updateRecord}
                   deleteRecord={deleteRecord}
                   />            

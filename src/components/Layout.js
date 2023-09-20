@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { ThemeContext, ThemeProvider } from "../context/ThemeContext";
+import { ThemeContext, ThemeProvider } from "../contexts/ThemeContext";
 
 function Layout({ startingTheme, children }) {
     return (
