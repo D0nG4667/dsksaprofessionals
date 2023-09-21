@@ -50,7 +50,7 @@ export default async function handler(req, res) {
                 console.log(`PUT /api/speakers/${id} status:200`);
             }
         } catch (e) {
-            res.status(500).send(`PUT /api/speakers/${id} status: 500 unexpected error`)
+            res.status(500).send(`PUT /api/speakers/${id} status: 500 unexpected error`);
             console.log(`PUT /api/speakers/${id} status:200`, e);
         }
     }
@@ -69,16 +69,16 @@ export default async function handler(req, res) {
                     return idCurrent > accumulator ? idCurrent : accumulator;
                 }, 0) + 1;
 
-                const newSpeakersRec = { ...recordFromBody, id: idNew.toString() };
+                const newSpeakerRec = { ...recordFromBody, id: idNew.toString() };
 
-                const newSpeakersArray = [newSpeakersRec, ...speakers];
+                const newSpeakersArray = [newSpeakerRec, ...speakers];
 
                 writeFile(
                     jsonFile, 
                     JSON.stringify({ speakers: newSpeakersArray }, null, 2)
                 );
                 res.setHeader("Content-Type", "application/json");
-                res.status(200).send(JSON.stringify(newSpeakersRec, null, 2));
+                res.status(200).send(JSON.stringify(newSpeakerRec, null, 2));
                 console.log(`POST /api/speakers/${id} status:200`);
             }
         } catch (e) {

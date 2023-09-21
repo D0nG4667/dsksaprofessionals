@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from 'axios'
+import axios from 'axios';
 
 export const REQUEST_STATUS = {
     LOADING: "loading",
@@ -10,22 +10,20 @@ export const REQUEST_STATUS = {
 const restUrl = "api/speakers";
 
 function useRequestRest() {    
-    const [data, setData] = useState(initialData);
+    const [data, setData] = useState([]);
     const [requestStatus, setRequestStatus] = useState(REQUEST_STATUS.LOADING);
     const [error, setError] = useState("");
 
-    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
     useEffect(async () => {
-    try {
-        const result = await axios.get(restUrl);
-        // throw "api failed to send data";
-        setRequestStatus(REQUEST_STATUS.SUCCESS);
-        setData(result.speakers);      
-    } catch (error) {
-        setRequestStatus(REQUEST_STATUS.FAILURE);
-        setError(error);      
-    }
+        try {
+            const result = await axios.get(restUrl);
+            // throw "api failed to send data";
+            setRequestStatus(REQUEST_STATUS.SUCCESS);
+            setData(result.data);      
+        } catch (error) {
+            setRequestStatus(REQUEST_STATUS.FAILURE);
+            setError(error);      
+        }
     
     }, []);
 
@@ -36,10 +34,12 @@ function useRequestRest() {
         (async () => {
             try {
                 setData(newRecords);
-                await axios.post(`${restUrl}/9999`, record);
+                const res = await axios.post(`${restUrl}/99999`, record);
                 if (doneCallback) {
-                    doneCallback();
+                    doneCallback();                    
                 }
+                const newRecordsDb = [res.data, ...data];
+                setData(newRecordsDb);
             } catch (error) {
                 console.log("error thrown inside delayFunction, error");
                 if (doneCallback) {
@@ -51,10 +51,10 @@ function useRequestRest() {
     }
 
     // Update
-    function updateRecord(recordUpdated, doneCallback) {
+    function updateRecord(record, doneCallback) {
         const originalRecords = [...data];
         const newRecords = data.map(function (rec) {
-            return rec.id === recordUpdated.id ? recordUpdated : rec;
+            return rec.id === record.id ? record : rec;
         });
 
         (async () => {
