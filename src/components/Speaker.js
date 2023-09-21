@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, memo } from "react";
 import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
 import { SpeakerContext, SpeakerProvider } from "../contexts/SpeakerContext";
 import SpeakerDelete from "./SpeakerDelete";
@@ -65,7 +65,7 @@ function Session ({ title, room }) {
 
     function doneCallback() {
       setInTransition(false);
-      console.log(`In SpeakerFavorite:doneCallback ${new Date().getMilliseconds()}`)        
+      // console.log(`In SpeakerFavorite:doneCallback ${new Date().getMilliseconds()}`)        
     }
     return (
       <div className="action padB1">
@@ -128,7 +128,7 @@ function Session ({ title, room }) {
     ) 
   }
   
-  function Speaker({ speaker, insertRecord, updateRecord, deleteRecord }) {
+  const Speaker = memo(function Speaker({ speaker, insertRecord, updateRecord, deleteRecord }) {
     const { showSessions } = useContext(SpeakerFilterContext);    
     return (
       <SpeakerProvider
@@ -150,7 +150,12 @@ function Session ({ title, room }) {
             <SpeakerDelete />              
         </div>
       </SpeakerProvider>
-    )    
+    );    
+  }, areEqualSpeaker);
+
+  function areEqualSpeaker(prevProps, nextProps) {
+    return (prevProps.speaker.favorite === nextProps.speaker.favorite);
+    
   }
 
   export default Speaker;
