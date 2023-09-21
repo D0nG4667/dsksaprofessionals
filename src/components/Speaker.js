@@ -2,6 +2,8 @@ import { useContext, useState, memo } from "react";
 import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
 import { SpeakerContext, SpeakerProvider } from "../contexts/SpeakerContext";
 import SpeakerDelete from "./SpeakerDelete";
+import { ErrorBoundary } from "react-error-boundary";
+
 
 function Session ({ title, room }) {
     return (
@@ -111,7 +113,7 @@ function Session ({ title, room }) {
         <SpeakerFavorite />
         <div>
             <p className="card-description">
-                {bio}
+                {bio.substr(0, 70)}
             </p>
             <div className="social d-flex flex-row mt-4">
                 <div className="company">
@@ -128,8 +130,26 @@ function Session ({ title, room }) {
     ) 
   }
   
-  const Speaker = memo(function Speaker({ speaker, insertRecord, updateRecord, deleteRecord }) {
-    const { showSessions } = useContext(SpeakerFilterContext);    
+  const SpeakerNoErrorBoundary = memo(function Speaker({ 
+    speaker, 
+    insertRecord, 
+    updateRecord, 
+    deleteRecord, 
+    showErrorCard,
+   }) {
+    const { showSessions } = useContext(SpeakerFilterContext); 
+    
+    if (showErrorCard) {
+      return (
+        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-sm-12 col-xs-12">
+          <div className="card card-height p-4 mt-4">
+            <img src="/images/speaker-99999.jpg" />                
+            <div><b>Error Showing Speaker</b></div>
+          </div>              
+        </div>
+      );
+    }
+
     return (
       <SpeakerProvider
         speaker={speaker}
@@ -155,6 +175,15 @@ function Session ({ title, room }) {
 
   function areEqualSpeaker(prevProps, nextProps) {
     return (prevProps.speaker.favorite === nextProps.speaker.favorite);
+    
+  }
+
+  function Speaker(props) {
+    return (
+      <ErrorBoundary fallback={<SpeakerNoErrorBoundary {...props} showErrorCard={true}/>}>
+        <SpeakerNoErrorBoundary {...props} />
+      </ErrorBoundary>
+    )
     
   }
 
